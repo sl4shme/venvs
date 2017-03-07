@@ -1,0 +1,43 @@
+sudo apt-get install python-dev python-virtualenv libffi-dev git
+virtualenv freezer_venv
+source freezer_venv/bin/activate
+pip install --upgrade pip
+pip install --upgrade setuptools
+cd python-freezerclient
+git checkout origin/stable/ocata
+pip install -r requirements.txt
+pip install ./
+cd ../freezer
+git checkout origin/stable/ocata
+pip install -r requirements.txt
+pip install ./
+
+
+
+#########
+Scheduler
+#########
+
+cat << EOF > /tmp/freezer-scheduler.conf
+[DEFAULT]
+debug = true
+verbose = true
+log_file = /tmp/freezer-scheduler.log
+client_id = some_client_name
+jobs_dir = /tmp/freezer-scheduler/
+interval = 20
+EOF
+
+sudo su
+# source freezer_venv/bin/activate
+# freezer-scheduler --config-file /tmp/freezer-scheduler.conf start
+
+freezer client-list
+freezer job-create -c some_client_name --file some_job.json
+
+
+#####
+Agent
+#####
+
+freezer-agent --config some_action.ini
