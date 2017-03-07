@@ -1,0 +1,20 @@
+{
+    "job_actions": [
+        {
+            "freezer_action": {
+                "action": "restore",
+                "storage": "local",
+                "container": "/path/where/the/backup/is/stored",
+                "restore_abs_path": "/tmp/restore/",
+                "backup_name": "something",
+                "log_file": "/tmp/freezer-agent.log"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "event": "stop"
+    },
+    "description": "Restore something Job"
+}

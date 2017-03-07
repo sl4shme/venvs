@@ -1,0 +1,19 @@
+{
+    "job_actions": [
+        {
+            "freezer_action": {
+                "action": "admin",
+                "container": "swift_container_name",
+                "backup_name": "something",
+                "remove_from_date": "2016-03-22T14:29:01",
+                "log_file": "/tmp/freezer-agent.log"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "event": "stop"
+    },
+    "description": "Backup something Job"
+}

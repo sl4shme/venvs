@@ -1,0 +1,20 @@
+{
+    "job_actions": [
+        {
+            "freezer_action": {
+                "action": "restore",
+                "container": "swift_container_name",
+                "restore_abs_path": "/tmp/restore/",
+                "backup_name": "something",
+                "restore_from_date": "2016-03-22T14:29:01",
+                "log_file": "/tmp/freezer-agent.log"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "event": "stop"
+    },
+    "description": "Restore something Job"
+}

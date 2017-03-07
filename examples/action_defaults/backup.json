@@ -1,0 +1,40 @@
+{
+    "action_defaults": {
+        "action": "backup",
+        "container": "container_name",
+        "log_file": "/tmp/freezer-agent.log",
+        "snapshot": true,
+        "no_incremental": true
+    },
+    "job_actions": [
+        {
+            "freezer_action": {
+                "path_to_backup": "/tmp/dir1/",
+                "backup_name": "dir1_backup"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        },
+        {
+            "freezer_action": {
+                "path_to_backup": "/tmp/dir2/",
+                "backup_name": "dir2_backup"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        },
+        {
+            "freezer_action": {
+                "path_to_backup": "/tmp/dir2/",
+                "backup_name": "dir2_backup"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "event": "stop"
+    },
+    "description": "Demo for action_defaults"
+}
+

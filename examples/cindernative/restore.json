@@ -1,0 +1,20 @@
+{
+    "job_actions": [
+        {
+            "freezer_action": {
+                "action": "restore",
+                "container": "swift_container_name",
+                "mode": "cindernative",
+                "cindernative_backup_id": "7ba0f03b-4a1d-43e2-abc2-1fd359d05fc3",
+                "backup_name": "something",
+                "log_file": "/tmp/freezer-agent.log"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "event": "stop"
+    },
+    "description": "Restore something Job"
+}

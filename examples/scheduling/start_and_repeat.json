@@ -1,0 +1,21 @@
+{
+    "job_actions": [
+        {
+            "freezer_action": {
+                "action": "backup",
+                "container": "swift_container_name",
+                "path_to_backup": "/tmp/",
+                "snapshot": true,
+                "no_incremental": true,
+                "backup_name": "something",
+                "log_file": "/tmp/freezer-agent.log"
+            },
+            "max_retries": 5,
+            "max_retries_interval": 600
+        }
+    ],
+    "job_schedule": {
+        "interval": "12 hours"
+    },
+    "description": "Backup something Job"
+}
