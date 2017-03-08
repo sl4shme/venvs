@@ -34,6 +34,87 @@
         line: "        return True"
         state: 'present'
 
+    - name: Modifying Freezer dashboard api.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/disaster_recovery/api/api.py" 
+        insertafter: ".*request.user.project_name$"
+        line: "        credentials['project_id'] = request.user.project_id"
+        state: 'present'
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: ".*dest='os_cacert'.,$"
+        state: 'present'
+        line: "        cfg.StrOpt('os-project-id',"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: ".*cfg.StrOpt.'os-project-id',$"
+        state: 'present'
+        line: "                   default=env('OS_PROJECT_ID'),"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: ".*default=env.'OS_PROJECT_ID'.,$"
+        state: 'present'
+        line: "                   help='Project id to scope to. Defaults env[OS_PROJECT_ID].',"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: ".*help='Project id to scope to. Defaults.*"
+        state: 'present'
+        line: "                   dest='os_project_id'),"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: "                               project_name=opts.os_project_name,$"
+        state: 'present'
+        line: "                               project_id=opts.os_project_id,"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: "                            project_name=opts.os_project_name,$"
+        state: 'present'
+        line: "                            project_id=opts.os_project_id,"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: "                 project_name=None,$"
+        state: 'present'
+        line: "                 project_id=None,"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: "            self.opts.os_project_name = project_name$"
+        state: 'present'
+        line: "        if project_id:"
+
+    - name: Modifying Freezer dashboard client.py file
+      become: yes
+      lineinfile:
+        dest: "/opt/stack/service/horizon/venv/lib/python2.7/site-packages/freezer/apiclient/client.py" 
+        insertafter: "        if project_id:$"
+        state: 'present'
+        line: "            self.opts.os_project_id = project_id"
+
     - include: "{{ playbook_dir }}/roles/FND-AP2/tasks/start_reload.yml"
       vars:
         apache_reload_requested: "true"
+
