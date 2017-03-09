@@ -1,12 +1,12 @@
 # Create and prepare Venv
+mkdir freezer_tempest
+cd frezer_tempest
+
 sudo apt-get install python-dev python-virtualenv libffi-dev git
 virtualenv freezer_venv
 source freezer_venv/bin/activate
 pip install --upgrade pip
 pip install --upgrade setuptools
-
-mkdir freezer_tempest
-cd frezer_tempest
 
 git clone https://git.openstack.org/openstack/tempest
 cd tempest
