@@ -32,6 +32,8 @@ cd ..
 
 
 # Initialize Tempest
+mkdir tempest_workdir
+cd tempest_workdir/
 tempest init .
 
 
