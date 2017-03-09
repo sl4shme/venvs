@@ -1,0 +1,42 @@
+# Create and prepare Venv
+sudo apt-get install python-dev python-virtualenv libffi-dev git
+virtualenv freezer_venv
+source freezer_venv/bin/activate
+pip install --upgrade pip
+pip install --upgrade setuptools
+
+mkdir freezer_tempest
+cd frezer_tempest
+
+git clone https://git.openstack.org/openstack/tempest
+cd tempest
+pip install -r requirements.txt
+pip install ./
+cd ..
+
+git clone https://git.openstack.org/openstack/python-freezerclient
+cd python-freezerclient
+git checkout origin/stable/ocata
+pip install -r requirements.txt
+pip install -r test-requirements.txt
+pip install ./
+cd ..
+
+git clone https://git.openstack.org/openstack/python-freezerclient
+cd freezer
+git checkout origin/stable/ocata
+pip install -r requirements.txt
+pip install -r test-requirements.txt
+pip install ./
+
+
+# Initialize Tempest
+tempest init .
+
+
+# Copy the tempest config file from one on the controlers in the current dir freezer_tempest/etc/
+# /opt/stack/tempest/configs/tempest_control-plane-1-region1.conf
+
+
+# Run Tempest tests
+ostestr -r freezer
