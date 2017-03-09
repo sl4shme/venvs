@@ -37,7 +37,7 @@ cd tempest_workdir/
 tempest init .
 
 
-# Copy the tempest config file from one on the controlers in the current dir freezer_tempest/etc/
+# Copy the tempest config file from one on the controlers in the current dir freezer_tempest/etc/tempest.conf
 # /opt/stack/tempest/configs/tempest_control-plane-1-region1.conf
 
 
